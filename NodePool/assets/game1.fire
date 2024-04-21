@@ -555,7 +555,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 14
@@ -590,8 +590,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        224.452,
-        195.279,
+        89.143,
+        228.571,
         0,
         0,
         0,
@@ -613,7 +613,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "fbTFcyj/ZDv6jLuIO+aLv7"
+    "_id": "63FMi91FRBVIziYWuwtphK"
   },
   {
     "__type__": "cc.Sprite",
@@ -645,18 +645,17 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": null,
-    "_id": "59e+A0qCdBVqTkunilvWZE"
+    "_id": "78MihEb39PzLy5Lolq3NS8"
   },
   {
-    "__type__": "a67e51zzApKC7cyMnYLmgQU",
+    "__type__": "08530ZOQ2lP3ZqmBwncoG/0",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 13
     },
     "_enabled": true,
-    "bulletPre": null,
-    "_id": "e5qAwh75BFSo2SS9qLkPDT"
+    "_id": "c4UBVQqjhJFJ6Ykyl8VDdv"
   },
   {
     "__type__": "103a4jJS19Hf74MPPrVh7fs",
@@ -668,12 +667,14 @@
     "_enabled": true,
     "PoolName": "BulletPool",
     "content": 10,
-    "bulletPrefab": null,
-    "_id": "037hE+F8pNsK1DSWDNymkZ"
+    "bulletPrefab": {
+      "__uuid__": "05e8c8d1-63d6-46c1-8937-2f9a06055de3"
+    },
+    "_id": "87i5Og9t9NNIi/gS+qDQp2"
   },
   {
     "__type__": "cc.Node",
-    "_name": "Player2",
+    "_name": "TestPlayer",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -686,9 +687,6 @@
       },
       {
         "__id__": 19
-      },
-      {
-        "__id__": 20
       }
     ],
     "_prefab": null,
@@ -714,8 +712,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        240,
-        400,
+        0,
+        0,
         0,
         0,
         0,
@@ -737,7 +735,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "dc9kCJAA5OGJyA21l9/a8r"
+    "_id": "c4t/N9n21HCpAx7sHaqlXQ"
   },
   {
     "__type__": "cc.Sprite",
@@ -769,31 +767,23 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": null,
-    "_id": "25AWGq1VZCI58tm2jHA92h"
+    "_id": "58zFiG6d1McYxwIA4755lI"
   },
   {
-    "__type__": "08530ZOQ2lP3ZqmBwncoG/0",
+    "__type__": "e4880yxZCVIDZB1TkAJKw9g",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 17
     },
     "_enabled": true,
-    "_id": "2feDNvi4pO+rybICocqTZM"
-  },
-  {
-    "__type__": "103a4jJS19Hf74MPPrVh7fs",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 17
+    "sprite": {
+      "__id__": 18
     },
-    "_enabled": true,
-    "PoolName": "BulletPool",
-    "content": 10,
-    "bulletPrefab": {
-      "__uuid__": "5638758b-d123-42a5-9593-b25fffe52251"
-    },
-    "_id": "5bLeSUTQVPD4DVZNzxJR15"
+    "delayT": 2,
+    "Speed": 100,
+    "mine": 0,
+    "max": 200,
+    "_id": "f5CeW/b/lLLpH7AVFDawEu"
   }
 ]

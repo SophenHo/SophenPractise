@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bullet2",
+    "_name": "bullet1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -109,7 +109,7 @@
     "_id": ""
   },
   {
-    "__type__": "8edc8VImBZIb6EbhViB2bUS",
+    "__type__": "e6184aaAFxI0ZtMcD5ZTIxh",
     "_name": "",
     "_objFlags": 0,
     "node": {
