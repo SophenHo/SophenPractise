@@ -46,15 +46,16 @@ export default class ScoreControl extends cc.Component {
         globalClickCount++;
         console.log("ScoreClickCount : " + globalClickCount);
         this.updateLabel();
+        this.showStar();
 
     }
 
     updateLabel() {
-        //"x2", "x1", "+1", "+2"
+        //元素："x2", "x1", "+1", "+2"
 
         // 確保索引不會超出陣列的範圍
-        let index = globalClickCount % this.resultArray.length;
-        let input = this.resultArray[index];
+        // let index = globalClickCount % this.resultArray.length;
+        // let input = this.resultArray[index];
 
         // let numToAdd;
         // switch(input) {
@@ -67,6 +68,26 @@ export default class ScoreControl extends cc.Component {
         //     default:
         //         numToAdd = 0; // 如果 input 不是 "x2" 或 "x1"，則 numToAdd 為 0
         // }
+        // // 將 Mnumber 的標籤內容轉換為數字，然後加上 numToAdd
+        // this.Mnumber.string = (Number(this.Mnumber.string) + numToAdd).toString();
+
+        // let numToAdd2;
+        // switch(input) {
+        //     case "+2":
+        //         numToAdd2 = 2;
+        //         break;
+        //     case "+1":
+        //         numToAdd2 = 1;
+        //         break;
+        //     default:
+        //         numToAdd2 = 0; // 如果 input 不是 "+2" 或 "+1"，則 numToAdd 為 0
+        // }
+        // // 將 Rnumber 的標籤內容轉換為數字，然後加上 numToAdd
+        // this.Rnumber.string = (Number(this.Rnumber.string) + numToAdd2).toString();
+
+        // 確保索引不會超出陣列的範圍
+        let index = globalClickCount % this.resultArray.length;
+        let input = this.resultArray[index];
 
         let numToAdd;
         switch(input) {
@@ -76,20 +97,79 @@ export default class ScoreControl extends cc.Component {
             case "x1":
                 numToAdd = 1;
                 break;
-            case "+1":
-                this.Rnumber.string = (Number(this.Mnumber.string) + 1).toString();
-                return; // 如果已經更新了 Rnumber，就不需要再更新 Mnumber，所以直接返回
-            case "+2":
-                this.Rnumber.string = (Number(this.Mnumber.string) + 2).toString();
-                return; // 如果已經更新了 Rnumber，就不需要再更新 Mnumber，所以直接返回
             default:
-                numToAdd = 0; // 如果 input 不是 "x2"、"x1"、"+1" 或 "+2"，則 numToAdd 為 0
+                numToAdd = 0; // 如果 input 不是 "x2" 或 "x1"，則 numToAdd 為 0
         }
-
         // 將 Mnumber 的標籤內容轉換為數字，然後加上 numToAdd
         this.Mnumber.string = (Number(this.Mnumber.string) + numToAdd).toString();
 
-        this.Rnumber.string = (Number(this.Rnumber.string) + numToAdd).toString();
+        let numToAdd2;
+        switch(input) {
+            case "+2":
+                numToAdd2 = 2;
+                break;
+            case "+1":
+                numToAdd2 = 1;
+                break;
+            default:
+                numToAdd2 = 0; // 如果 input 不是 "+2" 或 "+1"，則 numToAdd 為 0
+        }
+
+        // 如果 Mnumber 已經更新，則在加上 numToAdd2 之前，先將 Rnumber 的當前值乘以 Mnumber 的值
+        if (numToAdd > 0) {
+            this.Rnumber.string = (Number(this.Rnumber.string) * Number(this.Mnumber.string) + numToAdd2).toString();
+        } else {
+            // 將 Rnumber 的標籤內容轉換為數字，然後加上 numToAdd2
+            this.Rnumber.string = (Number(this.Rnumber.string) + numToAdd2).toString();
+        }  
+
+    }
+
+    showStar() {
+
+        // let scaleAction2 = cc.scaleTo(0.2, 0.8, 0.8); //縮放動作
+        // let fadeOut2 = cc.fadeOut(0.2); //淡出動作
+        // let spawn = cc.spawn(scaleAction2, fadeOut2); //並列動作
+
+        // let index = globalClickCount % this.resultArray.length;
+        // let currentInput = this.resultArray[index];
+        
+        // // 根據 currentInput 來決定是顯示 Mstar 還是 Rstar
+        // if (currentInput === "x2" || currentInput === "x1") {
+        //     this.Mstar.active = true;
+        //     this.Mstar.runAction(spawn); //執行並列動作
+        // } else if (currentInput === "+1" || currentInput === "+2") {
+        //     this.Rstar.active = true;
+        //     this.Rstar.runAction(spawn); //執行並列動作
+        // }
+
+        let scaleAction2 = cc.scaleTo(0.2, 0.8, 0.8); //縮放動作
+        let fadeOut2 = cc.fadeOut(0.2); //淡出動作
+        let spawn = cc.spawn(scaleAction2, fadeOut2); //並列動作
+
+        let index = globalClickCount % this.resultArray.length;
+        let currentInput = this.resultArray[index];
+        
+        // 根據 currentInput 來決定是顯示 Mstar 還是 Rstar
+        if (currentInput === "x2" || currentInput === "x1") {
+            this.Mstar.active = true;
+            let resetAction = cc.callFunc(() => {
+                this.Mstar.active = false;
+                this.Mstar.opacity = 255;
+                this.Mstar.scale = 1;
+            });
+            let sequence = cc.sequence(spawn, resetAction);
+            this.Mstar.runAction(sequence); //執行序列動作
+        } else if (currentInput === "+1" || currentInput === "+2") {
+            this.Rstar.active = true;
+            let resetAction = cc.callFunc(() => {
+                this.Rstar.active = false;
+                this.Rstar.opacity = 255;
+                this.Rstar.scale = 1;
+            });
+            let sequence = cc.sequence(spawn, resetAction);
+            this.Rstar.runAction(sequence); //執行序列動作
+        }
 
     }
 
