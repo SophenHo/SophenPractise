@@ -75,7 +75,8 @@ export default class SheepG extends cc.Component {
     }
 
     public recycleNode(node: cc.Node, idx: number): void {
-        console.log("recycleNode111 : " + this.pools.length);
+        let poo = this.pools[idx];
+        console.log("recycleNode111 : " + poo.size());
         let pool = this.pools[idx];
         pool.put(node);
         console.log("recycleNode222 : " + this.pools.length);
